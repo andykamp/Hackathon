@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-//import ScrollReducer from './ScrollReducer';
+import reducer from './reducer';
 
 
 
 export default combineReducers({
+    red: reducer,
 });
