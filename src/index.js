@@ -21,7 +21,7 @@ ReactDOM.render(
   <Provider store={store}>
   <Router path="/" history={browserHistory}>
     <Route path="/" component={App} />
-    <Route path="/Home" component={Home} />
+    <Route path="/Overlevelsesguide" component={Home} />
 
   </Router>
 </Provider>, document.getElementById('root'));

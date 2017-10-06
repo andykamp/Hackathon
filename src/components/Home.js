@@ -22,30 +22,33 @@ class Home extends Component {
   render() {
     console.log('passivescroll', this.props.passiveScroll);
     return (
-      <div>
+      <div style={{ backgroundColor: 'black'}}>
       <div className="App">
 
-        <div className="App-header">
-          <div className="header-image">
-            Backend
-          </div>
+        <div className="App-header" style={{backgroundColor: 'black'}}>
 
 
-          <div className="header-buttons">
-            Buttons
-          </div>
+
+
+            <button className="change btn button">Klasserom</button>
+            <button className="changeUtesteder btn button">Utesteder</button>
+            <button className="changeToalett btn button">Toalett</button>
+            <button className="BI btn button">BI</button>
+
+
+
+
+
         </div>
 
-        <div className="App-main">
+        <div className="App-main" id="map">
 
 
         </div>
 
 
       </div>
-      <div className="under-Div">
-        <h1>About us</h1>
-      </div>
+
     </div>
     );
   }

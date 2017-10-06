@@ -5,6 +5,7 @@ import { connect } from 'react-redux'; //to get acces to the actioncreater
 import {  } from './actions'; //all the actions in the actioncreator
 import './App.css';
 import { browserHistory } from 'react-router';
+import './newApp.css'
 
 
 class App extends Component {
@@ -50,7 +51,7 @@ onInfo () {
 
 }
 onBackendPress() {
-  browserHistory.push('/Home');
+  browserHistory.push('/Overlevelsesguide');
 
 }
 
@@ -61,9 +62,9 @@ onBackendPress() {
       <div>
       <div className="App">
 
-        <div className="App-header">
+        <div className="App-header" style={{backgroundColor:'black'}}>
           <div className="header-image">
-            Logo
+            Norkart
           </div>
 
 
@@ -71,13 +72,11 @@ onBackendPress() {
             <button className="btn header-button" onClick={this.onLocation.bind(this)}>
               Location
             </button>
-            <button className="btn header-button" onClick={this.onInfo.bind(this)}>
-              Info
-            </button>
+          
           </div>
         </div>
 
-        <div className="App-main">
+        <div className="App-main" style={{backgroundColor: 'black'}}>
           <div style={{ textAlign: 'center'}}>
 
 
@@ -90,13 +89,13 @@ onBackendPress() {
 
               <div className="home-buttons">
                 <div>
-                  <h1 className="header-textphoto" style={{ fontSize: 60}}>LOGO NAME</h1>
+                  <h1 className="header-textphoto" style={{ fontSize: 60}}>NORKART</h1>
                   <div style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                     <button onClick={this.onBackendPress.bind(this)}
-                      className="btn btn-primary"
+                      className="btn btn button"
 
                     >
-                      GET STARTED
+                      GO TO MAP
                     </button>
 
                   </div>
@@ -122,24 +121,7 @@ onBackendPress() {
 
 
       </div>
-      <div className="AppBlue">
-        <h1>How does it work?</h1>
-        <div className="info">
-          <div className="underInfo"><h3>Find your food</h3></div>
-          <div className="underInfo"><img src={require('./components/images/chefhat.png')} className="info-image" alt="logo" /></div>
-        </div>
 
-        <div className="info">
-          <div className="underInfo"><img src={require('./components/images/cart.png')} className="info-image" alt="logo" /></div>
-          <div className="underInfo"><h3>Add to cart and order</h3></div>
-        </div>
-
-        <div className="info">
-          <div className="underInfo"><h3>Wait and go get food</h3></div>
-          <div className="underInfo"><img src={require('./components/images/clock.png')} className="info-image" alt="logo" /></div>
-        </div>
-
-      </div>
     </div>
     );
   }
