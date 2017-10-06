@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import firebase from 'firebase';
 import { connect } from 'react-redux'; //to get acces to the actioncreater
-import {  } from './actions'; //all the actions in the actioncreator
+import { emailChanged } from './actions'; //all the actions in the actioncreator
 import './App.css';
 import { browserHistory } from 'react-router';
 import './newApp.css'
@@ -11,7 +11,8 @@ import './newApp.css'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { width: '0', height: '0' };
+    this.state = { width: '0', height: '0', modalOpen: false};
+
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -43,6 +44,10 @@ handleScroll(event) {
 
 }
 
+onEmailChange(text) {
+    this.props.emailChanged(text);
+}
+
 onLocation() {
 window.scrollTo(0,this.state.height);
 }
@@ -57,27 +62,28 @@ onBackendPress() {
 
 
   render() {
-
+console.log(this.props.id);
     return (
       <div>
       <div className="App">
 
-        <div className="App-header" style={{backgroundColor:'black'}}>
+        <div className="App-header" style={{backgroundColor:'#e74c3c'}}>
           <div className="header-image">
-            Norkart
+            <img src={require('./components/images/accenture.png')} style={{height: '80%'}} alt="logo" />
           </div>
 
 
           <div className="header-buttons">
             <button className="btn header-button" onClick={this.onLocation.bind(this)}>
-              Location
+              HJELP
             </button>
-          
+
           </div>
         </div>
 
-        <div className="App-main" style={{backgroundColor: 'black'}}>
+        <div className="App-main" style={{backgroundColor: 'white'}}>
           <div style={{ textAlign: 'center'}}>
+
 
 
 
@@ -88,17 +94,31 @@ onBackendPress() {
 
 
               <div className="home-buttons">
-                <div>
-                  <h1 className="header-textphoto" style={{ fontSize: 60}}>NORKART</h1>
-                  <div style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <button onClick={this.onBackendPress.bind(this)}
-                      className="btn btn button"
 
-                    >
-                      GO TO MAP
-                    </button>
+                <div className="auth-form" >
+                  <div className="auth-input">
+                    <img  src={require('./components/images/uka2.jpg')}  style={{width: 300 }} alt="logo" />
+
+
+                    <input
+                      className="form-control"
+
+                      placeholder="Din vennskapsid"
+                      style={{ marginBottom: 5 }}
+                      onChange={event => this.onEmailChange(event.target.value)}
+
+
+                    />
 
                   </div>
+                  <button onClick={this.onBackendPress.bind(this)}
+                    className="btn btn button"
+                    style={{backgroundColor: '#e74c3c'}}
+                  >
+                    Match me
+                  </button>
+
+
                 </div>
               </div>
 
@@ -112,10 +132,12 @@ onBackendPress() {
 
       </div>
       <div className="AppColor">
-        <h1>Location</h1>
+        <h1>Help</h1>
+        <img src={require('./components/images/divider.png')} style={{height: 30}} alt="logo" />
+
         <div className="info">
-          <div className="underInfo"><h3>We are located at folloveien 41</h3></div>
-          <div className="underInfo"><img src={require('./components/images/map icon.png')} className="info-image-location" alt="logo" /></div>
+          <div className="underInfo"><h3>Enter id and get matched with Uka</h3></div>
+          <div className="underInfo"><img src={require('./components/images/uka.jpg')} className="info-image-location" alt="logo" /></div>
         </div>
 
 
@@ -130,9 +152,9 @@ onBackendPress() {
 
 
 const mapStateToProps = (state) => {
-  const {  } = state.scroll;
+  const { id } = state.red;
 
   //createQueue is from the reducer/index and is the reucer!
-  return { };
+  return { id };
 };
-export default connect(null, {  })(App);
+export default connect(mapStateToProps, { emailChanged })(App);
